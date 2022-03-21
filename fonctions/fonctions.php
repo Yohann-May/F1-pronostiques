@@ -107,7 +107,7 @@ function getGP($gp_id) {
 
 function getPronos($user_id) {
     global $BD;
-    return $BD->query("SELECT * FROM pronostique WHERE user_id = ?", array($user_id));
+    return $BD->query("SELECT * FROM pronostique WHERE user_id = ? ORDER BY gp", array($user_id));
 }
 
 function getAllPronosGP($gp_id) {

@@ -48,9 +48,9 @@ if (!isset($_SESSION['nom']) && !isset($_SESSION['id'])) {
                 ?>
                 <tr>
                     <th scope="row"><?php echo getGP($prono['gp']) ?></th>
-                    <td class="<?php if ($prono['P1'] === $P1 && $GP === $prono['gp']) echo "table-success" ?>"><?php echo getPilote($prono['P1']) ?></td>
-                    <td class="<?php if ($prono['P2'] === $P2 && $GP === $prono['gp']) echo "table-success" ?>"><?php echo getPilote($prono['P2']) ?></td>
-                    <td class="<?php if ($prono['P3'] === $P3 && $GP === $prono['gp']) echo "table-success" ?>"><?php echo getPilote($prono['P3']) ?></td>
+                    <td class="<?php if ($prono['P1'] === $P1 && $GP === $prono['gp']) echo "table-success"; elseif ($GP === $prono['gp'] && ($prono['P1'] === $P2 || $prono['P1'] === $P3)) echo "table-warning"; ?>"><?php echo getPilote($prono['P1']) ?></td>
+                    <td class="<?php if ($prono['P2'] === $P2 && $GP === $prono['gp']) echo "table-success"; elseif ($GP === $prono['gp'] && ($prono['P2'] === $P1 || $prono['P2'] === $P3)) echo "table-warning";  ?>"><?php echo getPilote($prono['P2']) ?></td>
+                    <td class="<?php if ($prono['P3'] === $P3 && $GP === $prono['gp']) echo "table-success"; elseif ($GP === $prono['gp'] && ($prono['P3'] === $P1 || $prono['P3'] === $P2)) echo "table-warning";  ?>"><?php echo getPilote($prono['P3']) ?></td>
                 </tr>
             <?php } ?>
         </tbody>

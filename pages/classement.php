@@ -18,24 +18,21 @@ $line = 0;
     <title>F1 - Pronostiques</title>
 </head>
 <body>
-<div class="mt-3">
-    <h1 class="h3 mb-3 font-weight-normal">Classement de la saison 2022</h1>
-</div>
 <?php
 $array = [];
 foreach (getAllPronos() as $prono) {
     $userid = $prono['user_id'];
     foreach (getAllResultatsGP($prono['gp']) as $resultat) {
         $points = 0;
-        if ($prono['P1'] === $resultat['P1']) {
+        if ($prono['P1'] === $resultat['P1']) $points += 2;
+        if ($prono['P2'] === $resultat['P2']) $points += 2;
+        if ($prono['P3'] === $resultat['P3']) $points += 2;
+        if ($prono['P1'] === $resultat['P1'] && $prono['P2'] === $resultat['P2'] && $prono['P3'] === $resultat['P3'])
             $points += 2;
-        }
-        if ($prono['P2'] === $resultat['P2']) {
-            $points += 2;
-        }
-        if ($prono['P3'] === $resultat['P3']) {
-            $points += 2;
-        }
+
+        if ($prono['P1'] === $resultat['P2'] || $prono['P1'] === $resultat['P3']) $points += 1;
+        if ($prono['P2'] === $resultat['P1'] || $prono['P2'] === $resultat['P3']) $points += 1;
+        if ($prono['P3'] === $resultat['P1'] || $prono['P3'] === $resultat['P2']) $points += 1;
 
         if (key_exists($userid, $array))
             $array["$userid"] += $points;
@@ -43,29 +40,13 @@ foreach (getAllPronos() as $prono) {
             $array["$userid"] = $points;
     }
 }
-foreach ($array as $key => $val) {
-    echo getPseudo($key)." - ".$val."<br/>";
-}
-
-/*foreach (getAllResultats() as $resultat) {
-    foreach (getAllPronosGP($resultat['gp']) as $prono) {
-        $points = 0;
-        if ($prono['P1'] === $resultat['P1']) {
-            $points += 2;
-        }
-        if ($prono['P2'] === $resultat['P2']) {
-            $points += 2;
-        }
-        if ($prono['P3'] === $resultat['P3']) {
-            $points += 2;
-        }
-
-        echo getPseudo($prono['user_id'])." - ".$points."<br/>";
-    }
-}*/
+arsort($array);
 ?>
 
-<!--<div class="container">
+<div class="container">
+    <div class="mt-4">
+        <h1 class="h3 mb-3 font-weight-normal">Classement de la saison 2022</h1>
+    </div>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -76,20 +57,19 @@ foreach ($array as $key => $val) {
         </thead>
         <tbody>
         <?php
-        foreach (getAllPronos() as $prono) {
+        foreach ($array as $key => $val) {
             $line++;
-            var_dump($prono['P1']);
             ?>
             <tr>
                 <th scope="row"><?php echo $line ?></th>
-                <td><?php echo getPseudo($prono['user_id']) ?></td>
-                <td></td>
+                <td><?php echo getPseudo($key) ?></td>
+                <td><?php echo $val ?></td>
             </tr>
         <?php
         }
         ?>
         </tbody>
     </table>
-</div>-->
+</div>
 </body>
 </html>
