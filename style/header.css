@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+.menu {
+    margin-bottom:0;
+    position:fixed;
+    top: 0;
+    right: 0;
+    border:none;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.container {
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:15px;
+    padding-right:15px
+}
+.container:after {
+    content:"";
+    display:table;
+    clear:both
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+.navigation {
+    font-family: 'Raleway', Arial, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.navigation *, .navigation *:before {
+    box-sizing: border-box;
+}
+.navigation li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0 1.5em;
+    padding: 0;
+}
+.navigation > li:first-of-type {
+    border-left: none;
+}
+.navigation > li:last-of-type {
+    border-right: none;
+}
+.navigation a {
+    padding: 0.5em 0;
+    color: rgb(0, 0, 0);
+    position: relative;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.navigation a:before,
+.navigation a:after {
+    position: absolute;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+.navigation a:before {
+    bottom: 0;
+    display: block;
+    height: 3px;
+    width: 0%;
+    content: "";
+    background-color: #2980b9;
+}
+.navigation a:after {
+    left: 0;
+    top: 0;
+    padding: 0.5em 0;
+    position: absolute;
+    content: attr(data-hover);
+    color: #ffffff;
+    white-space: nowrap;
+    max-width: 0%;
+    overflow: hidden;
+}
+.navigation a:hover:before,
+.navigation .current a:before {
+    opacity: 1;
+    width: 100%;
+}
+.navigation a:hover:after,
+.navigation .current a:after {
+    max-width: 100%;
+}
+
+/*
+ * Sous menu suite
+ */
+.navigation ul {
+    display: none;
+}
+.navigation li:hover > ul {
+    display: flex;
+    position: absolute;
+    content: '';
+}
+
+.navbar {
+    background-color: rgb(252, 252, 252);
+    box-shadow: 1px 0px 3px #2980b9;
+}
