@@ -57,9 +57,9 @@ create table pronostique
     user_id bigint   not null,
     gp      bigint   not null,
     date    datetime not null,
+    P1      int      not null,
     P2      int      not null,
     P3      int      not null,
-    P1      int      not null,
     constraint pronostique_ID_uindex
         unique (ID)
 );
