@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
 .menu {
     margin-bottom:0;
     position:fixed;
@@ -21,7 +23,6 @@
     clear:both
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 .navigation {
     font-family: 'Raleway', Arial, sans-serif;
     text-align: center;
@@ -60,7 +61,7 @@
     bottom: 0;
     display: block;
     height: 3px;
-    width: 0%;
+    width: 0;
     content: "";
     background-color: #2980b9;
 }
@@ -72,7 +73,7 @@
     content: attr(data-hover);
     color: #ffffff;
     white-space: nowrap;
-    max-width: 0%;
+    max-width: 0;
     overflow: hidden;
 }
 .navigation a:hover:before,
@@ -99,5 +100,5 @@
 
 .navbar {
     background-color: rgb(252, 252, 252);
-    box-shadow: 1px 0px 3px #2980b9;
+    box-shadow: 1px 0 3px #2980b9;
 }

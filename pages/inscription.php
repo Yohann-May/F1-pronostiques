@@ -1,13 +1,13 @@
-<!doctype html>
 <?php
 include("header.php");
 include("../fonctions/fonctions.php");
 
 if (isset($_SESSION['nom']) && isset($_SESSION['id'])) {
-    //header("Location: monCompte.php");
-    //exit;
+    header("Location: monCompte.php");
+    exit;
 }
 ?>
+<!doctype html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -23,18 +23,13 @@ if (isset($_SESSION['nom']) && isset($_SESSION['id'])) {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <?php
-$user_pseudo = "";
 if (isset($_POST) && isset($_POST['inputPseudo']) && isset($_POST['inputEmail']) && isset($_POST['inputPassword'])) {
     $user_pseudo = getParam('inputPseudo');
     $user_mail = getParam('inputEmail');
-    $user_pass = password_hash(getParam('inputPassword'),  PASSWORD_DEFAULT );
 
     if (!userExist($user_pseudo)) {
         if (!userExist($user_mail)) {
-            $sql = "INSERT INTO users (login, email, password, date) VALUES (?, ?, ?, now())";
-            $data = [$user_pseudo, $user_mail, $user_pass];
-
-            if (insert($sql, $data)) {
+            if (addUser($user_pseudo, $user_mail, password_hash(getParam('inputPassword'),  PASSWORD_DEFAULT ))) {
                 $_SESSION['pseudo'] = $user_pseudo;
                 $_SESSION['email'] = $user_mail;
                 $_SESSION['id'] = getId($user_mail);;
@@ -76,7 +71,7 @@ if (isset($_POST) && isset($_POST['inputPseudo']) && isset($_POST['inputEmail'])
 
     <div class="form-label-group">
         <input type="text" id="inputPseudo" name="inputPseudo" class="form-control" placeholder="Pseudo" required="" value="<?php echo getParam('inputPseudo'); ?>">
-        <label for="inputEmail">Pseudo</label>
+        <label for="inputPseudo">Pseudo</label>
     </div>
 
     <div class="form-label-group">

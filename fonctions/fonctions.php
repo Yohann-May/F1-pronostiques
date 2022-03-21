@@ -19,6 +19,11 @@ function userExist($data): bool {
     return false;
 }
 
+function addUser($pseudo, $mail, $pass): bool {
+    global $BD;
+    return $BD->insert("INSERT INTO users (login, email, password, date) VALUES (?, ?, ?, now())", array($pseudo, $mail, $pass));
+}
+
 function getPass($email) {
     global $BD;
     $results = $BD->query("SELECT password FROM users WHERE email = ?", array($email));

@@ -32,7 +32,7 @@ if (isset($_POST['deconnect'])) {
 
     <div class="form-label-group">
         <input disabled type="text" id="inputPseudo" name="inputPseudo" class="form-control" placeholder="Pseudo" required="" value="<?php echo $_SESSION['pseudo'] ?>">
-        <label for="inputEmail">Pseudo</label>
+        <label for="inputPseudo">Pseudo</label>
     </div>
 
     <div class="form-label-group">
