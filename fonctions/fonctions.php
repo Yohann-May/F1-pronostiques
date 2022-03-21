@@ -110,7 +110,27 @@ function getPronos($user_id) {
     return $BD->query("SELECT * FROM pronostique WHERE user_id = ?", array($user_id));
 }
 
+function getAllPronosGP($gp_id) {
+    global $BD;
+    return $BD->query("SELECT * FROM pronostique WHERE gp = ?", array($gp_id));
+}
+
+function getAllPronos() {
+    global $BD;
+    return $BD->query("SELECT * FROM pronostique");
+}
+
 function getResultat($gp_id) {
+    global $BD;
+    return $BD->query("SELECT * FROM resultat WHERE gp = ?", array($gp_id));
+}
+
+function getAllResultats() {
+    global $BD;
+    return $BD->query("SELECT * FROM resultat GROUP BY gp");
+}
+
+function getAllResultatsGP($gp_id) {
     global $BD;
     return $BD->query("SELECT * FROM resultat WHERE gp = ?", array($gp_id));
 }

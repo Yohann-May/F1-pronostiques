@@ -14,6 +14,7 @@ $actualPage = basename($_SERVER['PHP_SELF'], '.php');
             <li class="<?php if ($actualPage === "accueil") echo "current"; ?>"><a href="accueil.php" class="nav-link">Accueil</a></li>
             <?php if ($isConnect) { ?>
                 <li class="<?php if (str_contains($actualPage,"pronostique")) echo "current"; ?>"><a href="pronostiques.php" class="nav-link">Pronostiques</a></li>
+                <li class="<?php if (str_contains($actualPage,"classement")) echo "current"; ?>"><a href="classement.php" class="nav-link">Classement</a></li>
                 <li class="<?php if ($actualPage === "monCompte") echo "current"; ?>"><a href="monCompte.php" class="nav-link">Mon compte</a></li>
             <?php } else { ?>
                 <li class="<?php if ($actualPage === "connexion") echo "current"; ?>"><a href="connexion.php" class="nav-link">Se connecter</a></li>
