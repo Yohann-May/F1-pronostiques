@@ -24,6 +24,16 @@ if (!isset($_SESSION['nom']) && !isset($_SESSION['id'])) {
         </div>
     </form>
 
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row" class="col-4">Légende</th>
+                <td class="table-success col-4">Le pilote a fini la ou vous l'avez prédit <br>2 points</td>
+                <td class="table-warning col-4">Le pilote a fini dans le top 3 <br>1 point</td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="mt-5">
         <h1 class="h3 mb-3 font-weight-normal">Vos pronostiques</h1>
     </div>
